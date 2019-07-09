@@ -1,8 +1,11 @@
-var http = require('http');
+const express = require('express');
 
-http.createServer(function (request, response) {
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    response.end('Hello World\n');
-}).listen(443);
+const app = express();
 
-console.log('Server started');
+app.get('/',(req,res)=>{
+    res.send('<h1>hello world</h1>');
+});
+
+const PORT =  process.env.PORT || 80;
+
+app.listen(PORT,() => console.log(`Server running on port ${PORT}`));
